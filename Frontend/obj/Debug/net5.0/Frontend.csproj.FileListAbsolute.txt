@@ -342,3 +342,4 @@ D:\Hackaton2022\E-Migrant\Frontend\bin\Debug\net5.0\Dominio.pdb
 D:\Hackaton2022\E-Migrant\Frontend\bin\Debug\net5.0\Persistencia.pdb
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\Index.cshtml.g.cs
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Registro\CreateMigrante.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\DatosPersonalesVer.cshtml.g.cs

@@ -41,12 +41,22 @@ namespace Persistencia
             try
             {
                  //var munEncontrado = _context.Migrantes.Find(migrante.Id);
-                 var migEncontrado = _context.Migrantes.FirstOrDefault(a => a.Documento == migrante.Documento);
+                 var migEncontrado = _context.Migrantes.FirstOrDefault(a => a.userName == migrante.userName);
                  if(migEncontrado != null)
                  {
-                     //munEncontrado.Nombre = municipio.Nombre;
-                     _context.SaveChanges();
-                     actualizado = true;
+                    migEncontrado.Nombre = migrante.Nombre;
+                    migEncontrado.Apellidos= migrante.Apellidos;
+                    migEncontrado.Tipo_Documento= migrante.Tipo_Documento;
+                    migEncontrado.Documento= migrante.Documento;
+                    migEncontrado.Pais= migrante.Pais;
+                    migEncontrado.FechaNacimiento= migrante.FechaNacimiento;
+                    migEncontrado.Direccion_Electronica= migrante.Direccion_Electronica;
+                    migEncontrado.Telefono= migrante.Telefono;
+                    migEncontrado.Dir_Actual= migrante.Dir_Actual;
+                    migEncontrado.Ciudad= migrante.Ciudad;
+                    migEncontrado.SituacionLab= migrante.SituacionLab;
+                    _context.SaveChanges();
+                    actualizado = true;
                  }
             }
             catch (System.Exception)
@@ -90,6 +100,5 @@ namespace Persistencia
         {
             return _context.Migrantes;
         }
-        }
-
     }
+}
