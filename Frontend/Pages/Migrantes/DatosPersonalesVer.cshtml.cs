@@ -47,8 +47,12 @@ namespace Frontend.Pages.Migrantes
         }
 
         public ActionResult OnPost(){
-            if(ModelState.IsValid)
+            if(_migrante.FechaNacimiento > DateTime.Now){
+                    ViewData["Error"] = "Fecha Invalida, Modifique nuevamente o actualice la pagina";
+                }
+            else if(ModelState.IsValid)
             {
+                
                 bool _actualizado = _repoMigrante.EditMigrante(_migrante);
                 if(_actualizado)
                 {
@@ -59,7 +63,7 @@ namespace Frontend.Pages.Migrantes
                     ViewData["Mensaje"] = "Hubo un problema";
                 }
             }
-            return RedirectToPage("../Migrantes/Index");
+            return Page();
         }
     }
 }
