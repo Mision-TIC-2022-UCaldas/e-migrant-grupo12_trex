@@ -138,7 +138,7 @@ namespace Frontend.Areas.Identity.Pages.Account
                         }
                         else if (roles.Contains("ENTIDAD"))
                         {
-                            return LocalRedirect("/registro-entidad-colaboradora");
+                            return LocalRedirect("/Registro/CreateEntidad");
                         }
 
                         //return LocalRedirect(returnUrl);
