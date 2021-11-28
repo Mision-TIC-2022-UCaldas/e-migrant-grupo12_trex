@@ -352,3 +352,5 @@ D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\Index.
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\ServiciosEntidades.cshtml.g.cs
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\EditarServicioEntidad.cshtml.g.cs
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\InhabilitarServicioEntidad.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\ServiciosActivos.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\ServiciosSinCupo.cshtml.g.cs
