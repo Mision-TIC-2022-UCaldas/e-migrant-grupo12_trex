@@ -12,6 +12,7 @@ namespace Frontend.Pages.Migrantes
     {
         public void OnGet()
         {
+            Page();
         }
     }
 }

@@ -30,6 +30,7 @@ namespace Frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IMigrante,RepoMigrante>();
+            services.AddScoped<IEmergencia,RepoEmergencia>();
             services.AddDbContext<Persistencia.AppContext>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
