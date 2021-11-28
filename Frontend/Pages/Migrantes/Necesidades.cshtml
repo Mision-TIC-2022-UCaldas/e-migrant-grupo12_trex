@@ -1,0 +1,145 @@
+﻿@page
+@model Frontend.Pages.Migrantes.NecesidadesModel
+@{
+}
+
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Necesidades [<a href="/Migrantes">Pagina Principal</a>]
+        <button type="button" class="btn btn-warning btn-lg" data-toggle="modal"
+                data-target="#myModal">Agregar Necesidad</button>
+                <br/>
+                @* [<a href="/Entidades/ServiciosActivos">Servicios Activos</a>]
+                [<a href="/Entidades/ServiciosSinCupo">Servicios Sin Cupo</a>] *@
+        <br/>
+        <hr/>
+        <span class="text-danger">@ViewData["Error"]</span>
+        <span class="text-success">@ViewData["mensajeCreado"]</span>
+            
+        </h3>
+        <br/>
+    </div>
+
+</div>
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <!-- Trigger the modal with a button -->
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content  justify-content-center">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Agrega una necesidad</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-10`">
+                                    <form method="post">
+                
+                                    <input type="hidden" asp-for="_necesidad.UserId" value="@User.Identity.Name">
+                                    <input type="hidden" asp-for="_necesidad.Status" value="PENDIENTE">
+
+
+                                    <div class="form-group row">
+                                        <label asp-for="_necesidad.Categoria" class="col-sm-4
+                                        control-label"> </label>
+                                        <div class="col-sm-8">
+                                            <select asp-for="_necesidad.Categoria" class="form-control" asp-items="@Model._listaNecesidades">
+                                                @* <option value="-1"></option> *@
+                                            </select>
+                                            <span asp-validation-for="_necesidad.Categoria" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group row">
+                                        <label asp-for="_necesidad.Descripcion" class="col-sm-2 control-label"></label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="_necesidad.Descripcion" class="form-control" />
+                                            <span asp-validation-for="_necesidad.Descripcion" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="_necesidad.Prioridad" class="col-sm-4
+                                        control-label"> </label>
+                                        <div class="col-sm-8">
+                                            <select asp-for="_necesidad.Prioridad" class="form-control" asp-items="@Model._listaPrioridad">
+                                                @* <option value="-1"></option> *@
+                                            </select>
+                                            <span asp-validation-for="_necesidad.Prioridad" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+                                  
+                                    <br/>
+                                    <button type="submit" class="btn btn-success btn-lg">Agregar</button>
+                                </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row justify-content-center">
+    @if (Model._ListarNecesidades is not null)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Categoria</td>
+                    <td>Descripcion</td>
+                    <td>Prioridad</td>
+                    <td>Estado</td>
+                    <td>Qué desea hacer?</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eme in Model._ListarNecesidades)
+                {
+                    @if(eme.UserId == User.Identity.Name)
+                    {
+                        <tr>
+                            <td>@eme.Id</td>
+                            <td>@eme.Categoria</td>
+                            <td>@eme.Descripcion</td>
+                            <td>@eme.Prioridad</td>
+                            <td>@eme.Status</td>
+                            <td>
+                                <a class="btn btn-outline-success" asp-page="EditarNecesidad" asp-route-emeId="@eme.Id">Marcar como Atendida</a>
+                            </td>
+                        </tr>
+                    }
+                    
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="lead">No hay necesidades registradas!</p>
+    }
+</div>
+@section Scripts{
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
