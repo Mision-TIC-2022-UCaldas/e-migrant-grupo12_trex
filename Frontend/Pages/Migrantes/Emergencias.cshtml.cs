@@ -54,7 +54,7 @@ namespace Frontend.Pages.Migrantes
                 bool _creado = _repoEmergencia.CreateEmergencia(_emergencia);
                 if(_creado)
                 {
-                    TempData["mensajeCreado"] = "La emergencia " + _emergencia.Descripcion + " se ha creado correctamente y sera atendida a brevedad!";
+                    ViewData["mensajeCreado"] = "La emergencia " + _emergencia.Descripcion + " se ha creado correctamente y sera atendida a brevedad!";
                 }
                 else{
                     ViewData["Mensaje"] = "Hubo un problema";
