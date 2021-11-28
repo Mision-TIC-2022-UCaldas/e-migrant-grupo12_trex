@@ -1,0 +1,38 @@
+﻿@page
+@model Frontend.Pages.Entidades.InhabilitarServicioEntidadModel
+@{
+}
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Inhabilitar Servicio [<a asp-page="ServiciosEntidades" asp-route-userNameA="@User.Identity.Name">Volver a Servicios</a>]
+        <br/>
+        <span class="text-danger">@ViewData["Existe"]</span>  
+        <span class="text-danger">@ViewData["Mensaje"]</span>  
+        @if(ViewData["Existe"] != "El Servicio no existe por favor validar")
+        {
+            <form method="post">
+                <br/>
+                <hr/>
+                <br/>
+                <h2>Esta seguro que desea inhabilitar este servicio?</h2>
+                <input type="hidden" asp-for="_servicioEntidad.Id" class="form-control" readonly />
+                <input type="hidden" asp-for="_servicioEntidad.Status" class="form-control" readonly />
+                <input type="hidden" asp-for="_servicioEntidad.Nombre" class="form-control" readonly />
+                <input type="hidden" asp-for="_servicioEntidad.FechaIni" class="form-control" readonly />
+                <input type="hidden" asp-for="_servicioEntidad.FechaFin" class="form-control" readonly />
+                <span class="text-danger">@ViewData["Mensaje"]</span>
+                <span class="text-success">@ViewData["mensajeCreado"]</span>
+                <br/>
+                <br/>
+                <button type="submit" class="btn btn-success btn-lg">Si, estoy Seguro</button>
+                </form>
+                <br/>
+                    <button class="btn btn-warning btn-lg"><a asp-page="ServiciosEntidades" asp-route-userNameA="@User.Identity.Name">No estoy seguro</a></button>
+
+        }
+        </h3>
+        <br/>
+    </div>
+
+</div>

@@ -1,101 +1,26 @@
 ﻿@page
-@model Frontend.Pages.Entidades.DatosPersonalesVerModel
+@model Frontend.Pages.Entidades.ServiciosEntidadesModel
 @{
 }
 
+
+
 <div class="row justify-content-center bg-light">
     <div class="col-sm-12">
-        <h3>Registra tus Datos [<a href="/Entidades">Pagina Principal</a>]
-                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal"
-                    data-target="#myModal">Modificar</button>
+        <h3>Servicios de la Entidad [<a href="/Entidades">Pagina Principal</a>]
+        <button type="button" class="btn btn-warning btn-lg" data-toggle="modal"
+                data-target="#myModal">Crear Servicio</button>
+        <br/>
+        <hr/>
+        <span class="text-danger">@ViewData["Error"]</span>
+        <span class="text-success">@ViewData["mensajeCreado"]</span>
+            
         </h3>
+        <br/>
+    </div>
 
-    </div>
 </div>
-<div class="row">
-    <div class="col-sm-12">
-        <p class="text-warning">@ViewData["Mensaje"]</p>
-        @if(ViewData["Error"]=="ErrorCreate"){
-            <p class="text-danger">Esta entidad ya se encuentra registrada, <button class="btn btn-warning"><a href="/Entidades">Volver Atras</a></button></p>
-        }
-    </div>
-</div>
-<div class="form-horizontal">
-    <div class="row">
-        <div class="col-sm-10">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.RazonSocial" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.RazonSocial" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.RazonSocial" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.NIT" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.NIT" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.NIT" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Direccion" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Direccion" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Direccion" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Telefono" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Telefono" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Telefono" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Direccion_Electronica" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Direccion_Electronica" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Direccion_Electronica" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Ciudad" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Ciudad" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Ciudad" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Pagina_Web" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Pagina_Web" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Pagina_Web" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Sector" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Sector" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Sector" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="_entidad.Servicios" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="_entidad.Servicios" class="form-control" readonly />
-                        <span asp-validation-for="_entidad.Servicios" class="text-danger"></span>
-                    </div>
-                </div>
-                <input type="hidden" asp-for="_entidad.userName" value="@User.Identity.Name"/>
-                <div class="form-group">
-                    @* <input type="submit" value="Crear" class="btn btn-secondary" /> *@
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 <div class="row justify-content-center bg-light">
     <div class="col-sm-12">
         <!-- Trigger the modal with a button -->
@@ -112,8 +37,60 @@
                     <div class="modal-body">
                         <div class="form-horizontal">
                             <div class="row">
-                                <div class="col-sm-10">
+                                <div class="col-sm-10`">
                                     <form method="post">
+                
+                <input type="hidden" asp-for="_servicioEntidad.UserId" value="@User.Identity.Name">
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.Nombre" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.Nombre" class="form-control" />
+                        <span asp-validation-for="_servicioEntidad.Nombre" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.CapacidadMAX" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.CapacidadMAX" class="form-control" />
+                        <span asp-validation-for="_servicioEntidad.CapacidadMAX" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.FechaIni" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.FechaIni" class="form-control" type="date" />
+                        <span asp-validation-for="_servicioEntidad.FechaIni" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.FechaFin" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.FechaFin" class="form-control" type="date" />
+                        <span asp-validation-for="_servicioEntidad.FechaFin" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.Status" class="col-sm-4
+                     control-label"> </label>
+                    <div class="col-sm-8">
+                        <select asp-for="_servicioEntidad.Status" class="form-control" asp-items="@Model._listaEstatus">
+                            @* <option value="-1"></option> *@
+                        </select>
+                        <span asp-validation-for="_servicioEntidad.Status" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @* <input class="form-control" asp-for="_emergencia.Codigo" /> *@
+                <span class="text-danger">@ViewData["Error"]</span>
+                <span class="text-success">@ViewData["mensajeCreado"]</span>
+                <br/>
+                <button type="submit" class="btn btn-success btn-lg">Crear</button>
+            </form>
+                                    @* <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group row">
                     <label asp-for="_entidad.RazonSocial" class="col-sm-4
@@ -195,7 +172,7 @@
                 <div class="form-group">
                     <input type="submit" value="Actualizar" class="btn btn-secondary" />
                 </div>
-            </form>
+            </form> *@
                                 </div>
                             </div>
                         </div>
@@ -211,9 +188,49 @@
 
     </div>
 </div>
-
-
-
+<div class="row justify-content-center">
+    @if (Model._ListarServiciosEntidades is not null)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>CantidadMAX</td>
+                    <td>Fecha Inicio</td>
+                    <td>Fecha Final</td>
+                    <td>Estado</td>
+                    <td>Qué desea hacer?</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eme in Model._ListarServiciosEntidades)
+                {
+                    @if(eme.UserId == User.Identity.Name)
+                    {
+                        <tr>
+                            <td>@eme.Id</td>
+                            <td>@eme.Nombre</td>
+                            <td>@eme.CapacidadMAX</td>
+                            <td>@eme.FechaIni</td>
+                            <td>@eme.FechaFin</td>
+                            <td>@eme.Status</td>
+                            <td>
+                                <a class="btn btn-outline-success" asp-page="EditarServicioEntidad" asp-route-emeId="@eme.Id">Editar</a>
+                                <a class="btn btn-outline-danger" asp-page="InhabilitarServicioEntidad" asp-route-emeId="@eme.Id">Inhabilitar</a>
+                            </td>
+                        </tr>
+                    }
+                    
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="lead">No hay Deportistas registrados!</p>
+    }
+</div>
 @section Scripts{
 @{
 await Html.RenderPartialAsync("_ValidationScriptsPartial");

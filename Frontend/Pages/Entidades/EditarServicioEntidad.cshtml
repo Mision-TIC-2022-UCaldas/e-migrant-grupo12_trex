@@ -1,0 +1,73 @@
+﻿@page
+@model Frontend.Pages.Entidades.EditarServicioEntidadModel
+@{
+}
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Editar Servicios [<a href="/Entidades/ServiciosEntidades">Pagina Anterior</a>]
+        <br/>
+        <hr/>
+        <span class="text-danger">@ViewData["Error"]</span>
+        <span class="text-success">@ViewData["mensajeCreado"]</span>
+            
+        </h3>
+        <br/>
+    </div>
+
+</div>
+<div class="form-horizontal">
+    <div class="row">
+        <div class="col-sm-10`">
+            <form method="post">
+
+                <input type="hidden" asp-for="_servicioEntidad.UserId" value="@User.Identity.Name">
+                <input type="hidden" asp-for="_servicioEntidad.Id">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.Nombre" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.Nombre" class="form-control" />
+                        <span asp-validation-for="_servicioEntidad.Nombre" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.CapacidadMAX" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.CapacidadMAX" class="form-control" />
+                        <span asp-validation-for="_servicioEntidad.CapacidadMAX" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.FechaIni" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.FechaIni" class="form-control" type="date" />
+                        <span asp-validation-for="_servicioEntidad.FechaIni" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.FechaFin" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_servicioEntidad.FechaFin" class="form-control" type="date" />
+                        <span asp-validation-for="_servicioEntidad.FechaFin" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_servicioEntidad.Status" class="col-sm-4
+                     control-label"> </label>
+                    <div class="col-sm-8">
+                        <select asp-for="_servicioEntidad.Status" class="form-control" asp-items="@Model._listaEstatus">
+                            @* <option value="-1"></option> *@
+                        </select>
+                        <span asp-validation-for="_servicioEntidad.Status" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @* <input class="form-control" asp-for="_emergencia.Codigo" /> *@
+                <br />
+                <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>

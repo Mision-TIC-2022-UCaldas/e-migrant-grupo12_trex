@@ -8,6 +8,7 @@ namespace Persistencia
         public DbSet<Migrante> Migrantes { get; set; }
         public DbSet<Entidad> Entidades { get; set; }
         public DbSet<Emergencia> Emergencias { get; set; }
+        public DbSet<ServicioEntidad> ServiciosEntidades { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {

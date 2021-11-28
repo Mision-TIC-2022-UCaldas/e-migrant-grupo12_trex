@@ -96,15 +96,15 @@ namespace Frontend.Areas.Identity.Pages.Account
                     }
                     else if (roles.Contains("ENTIDAD"))
                     {
-                        return LocalRedirect("/entidad-colaboradora");
+                        return LocalRedirect("/Entidades/Index");
                     }
                     else if (roles.Contains("GERENCIA"))
                     {
-                        return LocalRedirect("/gerencia-proyecto");
+                        return LocalRedirect("/Gerencias/Index");
                     }
                     else if (roles.Contains("ADMIN"))
                     {
-                        return LocalRedirect("/admin");
+                        return LocalRedirect("/Admins/Index");
                     }
 
                     //return LocalRedirect(returnUrl);
