@@ -11,6 +11,49 @@
     </div>
 </div>
 
+
+<div class="row justify-content-center">
+    @if (Model._ListarServiciosEntidades is not null)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Estado</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eme in Model._ListarServiciosEntidades)
+                {
+                    @if(eme.UserId == User.Identity.Name && eme.Status == "ACTIVOS")
+                    {
+                        <tr>
+                            <td>@eme.Id</td>
+                            <td>@eme.Nombre</td>
+                            <td>@eme.Status</td>
+                        </tr>
+                    }
+                    
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="lead">No hay servicios activos registrados!</p>
+    }
+</div>
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Servicios Activos y Cupo de Migrantes [<a href="/Entidades/ServiciosEntidades">Pagina Anterior</a>]
+                <br/>
+        </h3>
+        <br/>
+    </div>
+</div>
+
 <div class="row justify-content-center">
     @if (Model._ListarServiciosEntidades is not null)
     {
@@ -20,8 +63,6 @@
                     <td>ID</td>
                     <td>Nombre</td>
                     <td>CantidadMAX</td>
-                    <td>Fecha Inicio</td>
-                    <td>Fecha Final</td>
                     <td>Estado</td>
                 </tr>
             </thead>
@@ -34,8 +75,6 @@
                             <td>@eme.Id</td>
                             <td>@eme.Nombre</td>
                             <td>@eme.CapacidadMAX</td>
-                            <td>@eme.FechaIni</td>
-                            <td>@eme.FechaFin</td>
                             <td>@eme.Status</td>
                         </tr>
                     }
