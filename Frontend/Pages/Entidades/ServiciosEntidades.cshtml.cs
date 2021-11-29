@@ -13,9 +13,11 @@ namespace Frontend.Pages.Entidades
     public class ServiciosEntidadesModel : PageModel
     {
         public readonly IServicioEntidad _repoServicioEntidad;
+        public readonly IEntidad _repoEntidad;
         [BindProperty]
         public ServicioEntidad _servicioEntidad { get; set; }
         public IEnumerable<ServicioEntidad> _ListarServiciosEntidades { get; set;}
+        public Entidad _entidad { get; set; }
 
 
         public List<SelectListItem> _listaEstatus { get; } = new List<SelectListItem>
@@ -26,9 +28,10 @@ namespace Frontend.Pages.Entidades
             new SelectListItem { Value = "SIN_CUPO", Text = "Sin Cupo" }
         };
 
-        public ServiciosEntidadesModel(IServicioEntidad repoServicioEntidad)
+        public ServiciosEntidadesModel(IServicioEntidad repoServicioEntidad, IEntidad repoEntidad)
         {
             this._repoServicioEntidad = repoServicioEntidad;
+            this._repoEntidad = repoEntidad;
         }
 
         public ActionResult OnGet()
@@ -36,14 +39,35 @@ namespace Frontend.Pages.Entidades
             _ListarServiciosEntidades = _repoServicioEntidad.ListarServiciosEntidades();
             return Page();
         }
-        // public ActionResult OnGet(string userNameA)
+        // public List<SelectListItem> _listaServicios { get; } = new List<SelectListItem>
         // {
-        //     _ListarEmergencias = _repoEmergencia.ListarEmergencias();
-        //     return Page();
-        // }
-
+        //     new SelectListItem { Value = "SALUD", Text = "Salud" },
+        //     new SelectListItem { Value = "JURIDICOS", Text = "Juridicos" },
+        //     new SelectListItem { Value = "VIVERES", Text = "Vivires" },
+        //     new SelectListItem { Value = "COMIDA_PREPARADA", Text = "Comida preparada" },
+        //     new SelectListItem { Value = "EMPLEO", Text = "Empleo" },
+        //     new SelectListItem { Value = "ALOJAMIENTO_TEMPORAL", Text = "Alojamiento temporal" },
+        //     new SelectListItem { Value = "ALOJAMIENTO_PERMANENTE", Text = "Alojamiento permanente" },
+        //     new SelectListItem { Value = "EDUCACION", Text = "Educacion" },
+        //     new SelectListItem { Value = "OTROS", Text = "Otros" }
+        // };
+        // new SelectListItem { Value = "SALUD", Text = "Salud" },
+        //     new SelectListItem { Value = "ALIMENTACION", Text = "Alimentacion" },
+        //     new SelectListItem { Value = "EMPLEO", Text = "Empleo" },
+        //     new SelectListItem { Value = "ALOJAMIENTO_TEMPORAL", Text = "Alojamiento Temporal" },
+        //     new SelectListItem { Value = "ALOJAMIENTO_PERMANENTE", Text = "Alojamiento Permamente" },
+        //     new SelectListItem { Value = "EDUCACION", Text = "Educacion" },
+        //     new SelectListItem { Value = "AYUDA_LEGAL", Text = "Ayuda Legal" }
         public ActionResult OnPost()
         {
+            _entidad = _repoEntidad.FindByUserName(_servicioEntidad.UserId);
+            _servicioEntidad.Categoria = _entidad.Servicios;
+            
+            if(_entidad.Servicios == "JURIDICOS"){
+                _servicioEntidad.Categoria = "AYUDA_LEGAL";
+            }else if(_entidad.Servicios == "VIVERES" || _entidad.Servicios == "COMIDA_PREPARADA"){
+                _servicioEntidad.Categoria = "ALIMENTACION";
+            }
             if(_servicioEntidad.FechaIni > _servicioEntidad.FechaFin)
             {
                 ViewData["Error"] = "La fecha final no puede ser menor a la de inicio ";

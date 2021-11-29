@@ -1,0 +1,48 @@
+﻿@page
+@model Frontend.Pages.Migrantes.SolicitarServiciosModel
+@{
+}
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Agregar servicios [<a asp-page="Index" asp-route-userNameA="@User.Identity.Name">Pagina Principal</a>]
+        <br/>
+        <span class="text-danger">@ViewData["Existe"]</span>  
+        
+        <form method="post">
+                <br/>
+                <hr/>
+                <br/>
+                <h2>Esta seguro que desea agregar este servicio?</h2>
+                <input type="hidden" asp-for="_servicioEntidad.Id"  class="form-control"  />
+                <input type="hidden" asp-for="_servicioEntidad.UserId" class="form-control" />
+                <input type="hidden" asp-for="_servicioEntidad.Categoria" class="form-control"  />
+                <input type="hidden" asp-for="_servicioEntidad.CapacidadMAX" class="form-control"  />
+                <input type="hidden" asp-for="_servicioEntidad.Status"  class="form-control"  />
+ <br/>
+                @* <input  asp-for="_servicioMigrante.Id"  class="form-control"   /> *@
+                <input type="hidden" asp-for="_servicioMigrante.UserId"  class="form-control" />
+                <input type="hidden" asp-for="_servicioMigrante.ServicioEntidadId" class="form-control"  />
+                <input type="hidden" asp-for="_servicioMigrante.Categoria" class="form-control"  />
+                <input type="hidden" asp-for="_servicioMigrante.Status" class="form-control"  />
+
+
+                <span class="text-danger">@ViewData["Error"]</span>
+                <span class="text-success">@ViewData["mensajeCreado"]</span>
+                <br/>
+                <br/>
+                <button type="submit" class="btn btn-success btn-lg">Si, estoy Seguro</button>
+                </form>
+                <br/>
+                <button class="btn btn-warning btn-lg"><a asp-page="Index" asp-route-userNameA="@User.Identity.Name">No estoy seguro</a></button>
+
+        </h3>
+        <br/>
+    </div>
+
+</div>
+
+@section Scripts{
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

@@ -1,0 +1,64 @@
+﻿@page
+@model Frontend.Pages.Migrantes.ListarServiciosModel
+@{
+}
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Servicios Disponibles [<a href="/Migrantes">Pagina Principal</a>]
+                <br/>
+                @* [<a href="/Entidades/ServiciosActivos">Servicios Activos</a>]
+                [<a href="/Entidades/ServiciosSinCupo">Servicios Sin Cupo</a>] *@
+        <br/>            
+        </h3>
+        <br/>
+    </div>
+
+</div>
+
+
+<div class="row justify-content-center">
+    @if (Model._ListarServicesEntidades is not null)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Capacidad</td>
+                    <td>Categoria</td>
+                    <td>Estado</td>
+                    <td>Qué desea hacer?</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eme in Model._ListarServicesEntidades)
+                {
+                    @if(eme.Status != "SIN_CUPO" && eme.Status != "CERRADOS")
+                    {
+                        <tr>
+                            <td>@eme.Id</td>
+                            <td>@eme.Nombre</td>
+                            <td>@eme.CapacidadMAX</td>
+                            <td>@eme.Categoria</td>
+                            <td>@eme.Status</td>
+                            <td>
+                                <a class="btn btn-outline-success" asp-page="SolicitarServicios" asp-route-emeId="@eme.Id">Solicitar</a>
+                            </td>
+                        </tr>
+                    }
+                    
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="lead">No hay Servicios disponibles!</p>
+    }
+</div>
+@section Scripts{
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

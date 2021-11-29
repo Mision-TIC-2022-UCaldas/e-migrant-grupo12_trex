@@ -34,6 +34,7 @@ namespace Frontend
             services.AddScoped<IEntidad,RepoEntidad>();
             services.AddScoped<IServicioEntidad,RepoServicioEntidad>();
             services.AddScoped<INecesidad,RepoNecesidad>();
+            services.AddScoped<IServicioMigrante,RepoServicioMigrante>();
 
             services.AddDbContext<Persistencia.AppContext>();
             services.AddDbContext<ApplicationDbContext>(options =>

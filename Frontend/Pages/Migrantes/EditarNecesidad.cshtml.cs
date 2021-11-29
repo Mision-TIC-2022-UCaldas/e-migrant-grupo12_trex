@@ -13,7 +13,7 @@ namespace Frontend.Pages.Migrantes
 {
     public class EditarNecesidadModel : PageModel
     {
-         public readonly INecesidad _repoNecesidad;
+        public readonly INecesidad _repoNecesidad;
         [BindProperty]
         public Necesidad _necesidad{ get; set; }
         public EditarNecesidadModel(INecesidad repoNecesidad){

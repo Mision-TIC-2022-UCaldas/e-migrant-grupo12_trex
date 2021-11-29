@@ -5,6 +5,13 @@ using System.Linq;
 
 namespace Persistencia
 {
+
+    //  public class NewClass
+    // {
+    //     public int Id { get; set; }
+    //     public string UserId { get; set; }
+    // }
+
     public class RepoServicioEntidad : IServicioEntidad
     {
         private readonly AppContext _context;
@@ -46,6 +53,11 @@ namespace Persistencia
             var servicioEntidad = _context.ServiciosEntidades.FirstOrDefault(d => d.Id == id && d.UserId == user_id);
             return servicioEntidad;
         }
+        ServicioEntidad IServicioEntidad.ReadByOnlyId(int id)
+        {
+            var servicioEntidad = _context.ServiciosEntidades.FirstOrDefault(d => d.Id == id);
+            return servicioEntidad;
+        }
 
         bool IServicioEntidad.EditServicioEntidad(ServicioEntidad servicioEntidad)
         {
@@ -56,6 +68,7 @@ namespace Persistencia
                  var seEncontrado = _context.ServiciosEntidades.FirstOrDefault(a => a.Id == servicioEntidad.Id);
                  if(seEncontrado != null)
                  {
+                    seEncontrado.Categoria = servicioEntidad.Categoria;
                     seEncontrado.Nombre = servicioEntidad.Nombre;
                     seEncontrado.CapacidadMAX = servicioEntidad.CapacidadMAX;
                     seEncontrado.FechaIni = servicioEntidad.FechaIni;
@@ -92,6 +105,21 @@ namespace Persistencia
             }
             return actualizado;
         }
+
+        // public IQueryable<NewClass> FindAllServicios()
+        // {
+        //     return from n in db.ServicioEntidad
+        //            join c in db.Entidad on n.UserId equals c.UserName
+        //            select new NewClass() 
+        //            { 
+        //               Id = n.Id, 
+        //               UserId = c.UserName                 
+        //            };
+        // }
+
+
+        
+
 
     }
 }

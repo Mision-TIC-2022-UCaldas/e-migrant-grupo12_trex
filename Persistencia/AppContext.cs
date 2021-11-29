@@ -10,6 +10,7 @@ namespace Persistencia
         public DbSet<Emergencia> Emergencias { get; set; }
         public DbSet<Necesidad> Necesidades { get; set; }
         public DbSet<ServicioEntidad> ServiciosEntidades { get; set; }
+        public DbSet<ServicioMigrante> ServiciosMigrantes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {

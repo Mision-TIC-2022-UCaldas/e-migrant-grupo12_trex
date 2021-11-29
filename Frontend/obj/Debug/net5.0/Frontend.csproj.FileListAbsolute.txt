@@ -356,3 +356,7 @@ D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\Servic
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Entidades\ServiciosSinCupo.cshtml.g.cs
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\Necesidades.cshtml.g.cs
 D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\EditarNecesidad.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\ListarServicios.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\SolicitarServicios.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\ServiciosXCat.cshtml.g.cs
+D:\Hackaton2022\E-Migrant\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\ServiciosXNecesidad.cshtml.g.cs

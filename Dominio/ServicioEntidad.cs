@@ -21,6 +21,8 @@ namespace Dominio
         [Display(Name = "FechaIni", Prompt = "Digite Fecha Inicial")]
         public DateTime FechaIni { get; set; }
 
+        // public String Categoria { get; set; }
+
         [Required(ErrorMessage="El campo es obligatorio")]
         [Display(Name = "FechaFin", Prompt = "Digite Fecha Final")]
         public DateTime FechaFin { get; set; }
@@ -28,6 +30,8 @@ namespace Dominio
         [Required(ErrorMessage="El campo es obligatorio")]
         [Display(Name = "Status", Prompt = "Digite el estado")]
         public String Status { get; set; }
+        
+        public String Categoria { get; set; }
         
         public String UserId { get; set; }
     }
