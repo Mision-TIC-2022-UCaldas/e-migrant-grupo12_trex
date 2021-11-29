@@ -1,0 +1,66 @@
+﻿@page
+@model Frontend.Pages.Migrantes.EmergenciasModel
+@{
+}
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Emergencias [<a href="/Migrantes">Pagina Principal</a>]
+        <br/>
+        <hr/>
+        <p>Digite el Codigo de la Emergencia</p>
+            <form method="post">
+                <input type="hidden" asp-for="_emergencia.MigranteId" value="@User.Identity.Name">
+                <input class="form-control" asp-for="_emergencia.Codigo" />
+                <span class="text-danger">@ViewData["Error"]</span>
+                <span class="text-success">@ViewData["mensajeCreado"]</span>
+                <br/>
+                <button type="submit" class="btn btn-success btn-lg">Solicitar Emergencias</button>
+            </form>
+        </h3>
+        <br/>
+    </div>
+
+</div>
+
+@* .Count(d => d.MigranteId == User.Identity.Name) > 0 *@
+
+<div class="row justify-content-center">
+    @if (Model._ListarEmergencias is not null)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Codigo</td>
+                    <td>Nombre</td>
+                    <td>Estado</td>
+                    <td>Qué desea hacer?</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eme in Model._ListarEmergencias)
+                {
+                    @if(eme.MigranteId == User.Identity.Name)
+                    {
+                        <tr>
+                            <td>@eme.Id</td>
+                            <td>@eme.Codigo</td>
+                            <td>@eme.Descripcion</td>
+                            <td>@eme.Status</td>
+                            <td>
+                                <a class="btn btn-outline-success" asp-page="AtenderEmergencia" asp-route-emeId="@eme.Id">Marcar como Atendido</a>
+                                <a class="btn btn-outline-danger" asp-page="EliminarEmergencia" asp-route-emeId="@eme.Id">Cancelar</a>
+                            </td>
+                        </tr>
+                    }
+                    
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="lead">No hay Deportistas registrados!</p>
+    }
+</div>

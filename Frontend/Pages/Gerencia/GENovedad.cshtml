@@ -1,0 +1,40 @@
+﻿@page
+@model Frontend.GENovedadModel
+@{
+}
+<h2>Listado de novedades</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha de la novedad</th>
+            <th>Días de activos</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var novedad in @Model.Novedads)
+        {
+            <tr>
+                <td>@novedad.FechaInicio</td>
+                <td>@novedad.DiasNovedad</td>
+                <td>@novedad.Descripcion</td>
+                <td>
+                    <a class="btn btn-secondary table-btn" asp-page="./RegistroNovedad" asp-route-idNovedad="@novedad.Id">
+                        <i class="bi bi-pencil-square" aria-hidden="true"></i>
+                        Actualizar
+                    </a>
+                </td>
+                @* <td>
+                    <a class="btn btn-danger table-btn" asp-page="./EliminarNovedad" asp-route-idNovedad="@novedad.Id">
+                        <i class="bi bi-trash" aria-hidden="true"></i>
+                        Eliminar
+                    </a> 
+                </td> *@
+            </tr>
+        }
+    </tbody>
+</table>
+@*<a class="btn btn-primary table-btn" asp-page="./RegistroNovedad">
+    <i class="bi bi-file-plus" aria-hidden="true"></i>
+    Crear novedad
+</a> *@

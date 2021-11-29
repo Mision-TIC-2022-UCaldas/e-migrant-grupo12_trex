@@ -1,0 +1,20 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Frontend.Pages.Migrantes.IndexModel
+@{
+}
+<meta name="google-signin-client_id" content="176147769913-5d9armj8lrjno91q7o6t41gia9kd3loa.apps.googleusercontent.com">
+<div class= "center"> <div class="g-signin2" data-onsuccess="onSignIn"></div></div>
+
+@*<h1>Bienvenido Migrante @User.Identity.Name</h1>*@
+<h4><a asp-page="DatosPersonalesVer" asp-route-userNameA="@User.Identity.Name">Ver Datos Personales</a></h4>
+<h4><a asp-page="Emergencias" asp-route-userNameA="@User.Identity.Name">Emergencias</a></h4>
+<h4><a asp-page="Grupos" asp-route-userNameA="@User.Identity.Name">Grupos de Amigos y Familiares</a></h4>
+<a class="btn btn-primary table-btn" asp-page="/Migrantes/GNovedad">
+        <i class="bi bi-file-plus" aria-hidden="true"></i>
+            Novedades
+</a>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -1,0 +1,32 @@
+﻿@page
+@model Frontend.RegistroNovedadModel
+@{
+}
+<h1> NOVEDADES DE INTERES </h1>
+<form method="post">
+    <input type="hidden" asp-for="novedad.Id">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label for="inputState">Fecha de la novedad</label>
+                <input asp-for="novedad.FechaInicio" type="date" class="form-control">
+                <span class="text-danger" asp-validation-for="novedad.FechaInicio"></span>
+            </div>
+            <div class="col">
+                <label for="inputState">Numero de días</label>
+                <input asp-for="novedad.DiasNovedad" type="number" class="form-control" placeholder="Dias de la novedad">
+                <span class="text-danger" asp-validation-for="novedad.DiasNovedad"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="inputState">Descripción:</label>
+                <textarea type="textarea" asp-for="novedad.Descripcion"
+                    class="form-control" placeholder="Escriba una breve descripción">
+                </textarea>
+                <span class="text-danger" asp-validation-for="novedad.Descripcion"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"> Guardar </button>
+    </div>
+</form>

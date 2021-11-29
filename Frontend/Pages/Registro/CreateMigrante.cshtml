@@ -1,0 +1,123 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model Frontend.Pages.Registro.CreateMigranteModel
+@{
+    ViewData["Title"] = "Registrar Datos";
+}
+
+
+<div class="row justify-content-center bg-light">
+    <div class="col-sm-12">
+        <h3>Registra tus Datos</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <p class="text-warning">@ViewData["Mensaje"]</p>
+    </div>
+</div>
+<div class="form-horizontal">
+    <div class="row">
+        <div class="col-sm-10">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Nombre" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Nombre" class="form-control" />
+                        <span asp-validation-for="_migrante.Nombre" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Apellidos" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Apellidos" class="form-control" />
+                        <span asp-validation-for="_migrante.Apellidos" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Tipo_Documento" class="col-sm-2 control-label"> </label>
+                    <div class="col-sm-10">
+                        <select asp-for="_migrante.Tipo_Documento" class="form-control" asp-items="@Model._tipoDoc">
+                            <option value="">Seleccionar Tipo de Documento</option>
+                        </select>
+                        <span asp-validation-for="_migrante.Tipo_Documento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Documento" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Documento" class="form-control" />
+                        <span asp-validation-for="_migrante.Documento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Pais" class="col-sm-2 control-label"> </label>
+                    <div class="col-sm-10">
+                        <select asp-for="_migrante.Pais" class="form-control" asp-items="@Model._listaPais">
+                            <option value="">Seleccionar El Pais de Origen</option>
+                        </select>
+                        <span asp-validation-for="_migrante.Pais" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.FechaNacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.FechaNacimiento" class="form-control" type="date" />
+                        <span asp-validation-for="_migrante.FechaNacimiento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Direccion_Electronica" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Direccion_Electronica" class="form-control" />
+                        <span asp-validation-for="_migrante.Direccion_Electronica" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Telefono" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Telefono" class="form-control" />
+                        <span asp-validation-for="_migrante.Telefono" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Dir_Actual" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Dir_Actual" class="form-control" />
+                        <span asp-validation-for="_migrante.Dir_Actual" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.Ciudad" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="_migrante.Ciudad" class="form-control" />
+                        <span asp-validation-for="_migrante.Ciudad" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="_migrante.SituacionLab" class="col-sm-2 control-label">Situacion Laboral</label>
+                    <div class="col-sm-10">
+                        <select asp-for="_migrante.SituacionLab" class="form-control" asp-items="@Model._listaLab">
+                            <option value="">Seleccionar su Situacion Laboral</option>
+                        </select>
+                        <span asp-validation-for="_migrante.SituacionLab" class="text-danger"></span>
+                    </div>
+                </div>
+                <input type="hidden" asp-for="_migrante.userName" value="@User.Identity.Name"/>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+}

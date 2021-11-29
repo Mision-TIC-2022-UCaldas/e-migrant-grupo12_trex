@@ -1,0 +1,14 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> UserManager
+@inject UserManager<IdentityUser> UserManager
+@model Frontend.IndexModel
+@{
+}
+<h1> Bienvenido usuario de gerencia @User.Identity.Name</h1>
+
+<h4><a asp-page="RegistroNovedad" asp-route-userNameA="@User.Identity.Name"> Crear novedades </a></h4>
+<a class="btn btn-primary table-btn" asp-page="/Gerencia/GENovedad">
+        <i class="bi bi-file-plus" aria-hidden="true"></i>
+            Visualizar Novedades
+</a>
