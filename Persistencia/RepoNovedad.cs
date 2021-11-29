@@ -29,6 +29,7 @@ namespace Persistencia
             return novedadAdicionado.Entity;
         }
 
+
         bool INovedad.DeleteNovedad(int idNovedad)
         {
             var NovedadEncontrado= _appContext.Novedad.FirstOrDefault(m=>m.Id == idNovedad);
@@ -62,5 +63,6 @@ namespace Persistencia
             }
             return novedadEncontrada;
         }
+        
     }
 }

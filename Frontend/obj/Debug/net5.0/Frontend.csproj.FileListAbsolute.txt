@@ -540,3 +540,4 @@ C:\Users\Adrian\Desktop\e-migrant-grupo28_trex-E\Frontend\obj\Debug\net5.0\Razor
 C:\Users\Adrian\Desktop\e-migrant-grupo28_trex-E\Frontend\obj\Debug\net5.0\Razor\Pages\Registro\CreateGerencia.cshtml.g.cs
 C:\Users\Adrian\Desktop\e-migrant-grupo28_trex-E\Frontend\obj\Debug\net5.0\Razor\Pages\Gerencia\Index.cshtml.g.cs
 C:\Users\Adrian\Desktop\e-migrant-grupo28_trex-E\Frontend\obj\Debug\net5.0\Razor\Pages\Gerencia\GENovedad.cshtml.g.cs
+C:\Users\Adrian\Desktop\e-migrant-grupo28_trex-E\Frontend\obj\Debug\net5.0\Razor\Pages\Migrantes\Evaluanos.cshtml.g.cs

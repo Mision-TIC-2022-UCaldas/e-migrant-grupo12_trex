@@ -14,10 +14,12 @@ namespace Frontend
         
         private readonly INovedad _repositorioNovedad = new RepoNovedad(new Persistencia.AppContext());
         public IEnumerable<Novedad> Novedads { get; set; }
+
+        
+        
         public void OnGet()
         {
             Novedads = _repositorioNovedad.GetAllNovedad();
         }
-
     }
 }

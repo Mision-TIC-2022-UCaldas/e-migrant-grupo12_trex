@@ -21,5 +21,6 @@ namespace Persistencia
 
         // ver
         Novedad GetNovedad(int idNovedad);
+
     }
 }

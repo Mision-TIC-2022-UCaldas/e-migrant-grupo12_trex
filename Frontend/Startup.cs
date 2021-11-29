@@ -42,7 +42,8 @@ namespace Frontend
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
-            /*
+            services.AddSingleton<IRepositorioCalificacionApp,RepositorioCalificacionApp>();
+            
             services.AddAuthentication()
             .AddGoogle(options =>
             {
@@ -51,7 +52,7 @@ namespace Frontend
 
                 options.ClientId = googleAuthNSection["781086577503-hi3162da1705avgiibrkj0pci8ceif4i.apps.googleusercontent.com"];
                 options.ClientSecret = googleAuthNSection["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"];
-            }); */
+            }); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

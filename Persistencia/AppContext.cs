@@ -10,13 +10,14 @@ namespace Persistencia
         public DbSet<Emergencia> Emergencias { get; set; }
         public DbSet<Novedad> Novedad {get;set;}
         public DbSet<ServicioEntidad> ServiciosEntidades { get; set; }
-    
+        public DbSet <CalificacionApp> CalificacionApp {get;set;}
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
             if(!optionBuilder.IsConfigured)
             {
-                optionBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Grupo28TREX");
+                optionBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Grupo28TREX Release");
             }
         }
 
