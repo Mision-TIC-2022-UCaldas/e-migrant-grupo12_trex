@@ -13,5 +13,9 @@ namespace Dominio
         public int DiasNovedad {get;set;} 
         [Required (ErrorMessage = "La descripción es obligatoria.")]
         public string Descripcion {get;set;}
+
+        [Required(ErrorMessage="El campo {0} es obligatorio")]
+        [Display (Name="Estado")]
+        public string Estado {get;set;}
     }
 }

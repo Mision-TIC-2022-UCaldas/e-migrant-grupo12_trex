@@ -17,7 +17,7 @@ namespace Persistencia
         {
             if(!optionBuilder.IsConfigured)
             {
-                optionBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Grupo28TREX Release");
+                optionBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Grupo28TREX RReleaseRR");
             }
         }
 
